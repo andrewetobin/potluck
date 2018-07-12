@@ -17,11 +17,18 @@ class Potluck
   end
 
   def menu
-    menu = Hash.new { |h, k| h[k] = [] }
+    @menu = Hash.new { |h, k| h[k] = [] }
     @dishes.each do |dish|
-      menu[dish.category] << dish.name
+      @menu[(dish.category.to_s + 's').to_sym] << dish.name
     end
-    menu
+    organize_menu
+  end
+
+  def organize_menu
+    @menu.map do |key, value|
+      @menu[key] = value.sort
+    end
+    @menu    
   end
 
   def ratio(course)

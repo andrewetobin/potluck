@@ -69,7 +69,7 @@ class PotluckTest < Minitest::Test
     potluck.add_dish(candy_salad)
     potluck.add_dish(bean_dip)
 
-    expected = {:appetizer=>["Couscous Salad", "Summer Pizza", "Bean Dip"], :entre=>["Roast Pork", "Cocktail Meatballs"], :dessert=>["Candy Salad"]}
+    expected = {:appetizers=>["Bean Dip", "Couscous Salad", "Summer Pizza"],:entres=>["Cocktail Meatballs", "Roast Pork"],:desserts=>["Candy Salad"]}
 
     assert_equal expected, potluck.menu
     assert_equal 50.0, potluck.ratio(:appetizer)
@@ -78,5 +78,8 @@ class PotluckTest < Minitest::Test
 
 end
 
+# pry(main)> potluck.menu
+# # => {:appetizers=>["Bean Dip", "Couscous Salad", "Summer Pizza"],:entres=>["Cocktail Meatballs", "Roast Pork"],:desserts=>["Candy Salad"]}
+# pry(main)> potluck.ratio(:appetizer)
 # pry(main)> potluck.ratio(:appetizer)
 # #=> 50.0
